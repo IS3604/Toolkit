@@ -28,6 +28,7 @@ create table if not exists public.resources (
   icon_url         text,                                   -- uploaded icon, stored as a small data: URL
   tags             text[] not null default '{}',
   is_pinned        boolean not null default false,          -- admin-pinned to top
+  is_featured      boolean not null default false,          -- shown in the big top banner
   open_in_new_tab  boolean not null default true,
   sort_order       int not null default 0,
   click_count      int not null default 0,
@@ -60,6 +61,9 @@ create table if not exists public.admins (
   user_id    uuid primary key references auth.users(id) on delete cascade,
   created_at timestamptz not null default now()
 );
+
+-- Upgrade older installs
+alter table public.resources add column if not exists is_featured boolean not null default false;
 
 -- ---------- Helpers ----------
 create or replace function public.is_admin()

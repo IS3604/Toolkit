@@ -58,7 +58,7 @@ header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.86);backdro
 .hero>*{position:relative}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;background:var(--soft);border:1px solid rgba(194,65,12,.15);color:var(--brand);font-size:12px;font-weight:500}
 h1{font:600 40px/1.1 var(--display);letter-spacing:-.025em;margin:12px 0 6px;text-wrap:balance}
-h1 em{font-style:normal;color:var(--brand)}
+h1 em{font-style:normal;background:linear-gradient(120deg,#E8410A,#C2410C 55%,#9A3412);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tag{font-size:17px;color:var(--muted);margin:0}
 .hero .search{margin:18px 0 0;max-width:none;display:none}
 
@@ -110,7 +110,8 @@ h1 em{font-style:normal;color:var(--brand)}
 
 /* cards */
 .card{position:relative;display:flex;flex-direction:column;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--card);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;animation:up .35s both;text-align:left}
-.card:hover{transform:translateY(-2px);background:#fff;border-color:rgba(255,87,26,.3);box-shadow:var(--lift)}
+.card:hover{transform:translateY(-3px);background:#fff;border-color:rgba(255,87,26,.35);box-shadow:var(--lift),0 0 0 4px rgba(255,87,26,.06)}
+.card .ico{transition:transform .3s cubic-bezier(.2,.8,.2,1)}.card:hover .ico{transform:scale(1.06) rotate(-4deg)}
 .ctop{display:flex;gap:12px;align-items:flex-start}
 .ico{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--soft);border:1px solid rgba(194,65,12,.1);color:var(--brand);font-size:19px;flex:none;overflow:hidden}
 .ico img{width:100%;height:100%;object-fit:cover;background:#fff}
@@ -120,7 +121,35 @@ h1 em{font-style:normal;color:var(--brand)}
 .ctitle{flex:1;min-width:0;padding-top:1px}
 .ctitle h3{margin:0;font:600 15px/1.3 var(--display);letter-spacing:-.01em;display:flex;gap:6px;align-items:flex-start}
 .ctitle h3 span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.new{flex:none;margin-top:2px;background:var(--cta);color:#fff;font:600 10px/1 var(--body);letter-spacing:.04em;text-transform:uppercase;padding:3px 5px;border-radius:4px}
+.flags{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.flag{flex:none;display:inline-flex;align-items:center;gap:3px;font:600 10.5px/1 var(--body);letter-spacing:.02em;padding:4px 7px 4px 6px;border-radius:99px;font-style:normal;white-space:nowrap}
+.flag .ic{font-size:11px;stroke-width:2.2}
+.flag.hot{background:linear-gradient(135deg,#FF7A3D,#E8410A);color:#fff;box-shadow:0 2px 8px -2px rgba(232,65,10,.55)}
+.flag.new{background:#fff;color:var(--brand);box-shadow:inset 0 0 0 1px rgba(194,65,12,.28)}
+.launch{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
+.launch .ic{font-size:12px}
+.card.is-hot{background:linear-gradient(180deg,#FFF6F0 0%,var(--card) 60%)}
+/* featured banner */
+.feat{position:relative;overflow:hidden;margin:18px 0 6px;border-radius:24px;background:#1A1411;color:#F7F1EC;padding:34px 36px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;isolation:isolate;box-shadow:0 30px 60px -30px rgba(33,27,23,.55),0 0 0 1px rgba(255,255,255,.04) inset;animation:up .45s both}
+.feat:before{content:"";position:absolute;inset:-40% -10% auto auto;width:560px;height:560px;background:radial-gradient(closest-side,rgba(255,87,26,.55),rgba(255,87,26,0));z-index:-1;filter:blur(10px)}
+.feat:after{content:"";position:absolute;left:-120px;bottom:-200px;width:420px;height:420px;background:radial-gradient(closest-side,rgba(194,65,12,.35),transparent);z-index:-1}
+.feat .grain{position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(90deg,transparent,#000 60%)}
+.feat .eyebrow{display:inline-flex;align-items:center;gap:6px;font:600 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:#FFB08A}
+.feat .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--cta);box-shadow:0 0 0 4px rgba(255,87,26,.25)}
+.feat h2{font:600 34px/1.08 var(--display);letter-spacing:-.03em;margin:12px 0 10px;text-wrap:balance;color:#fff}
+.feat p{margin:0;max-width:56ch;color:#C9BCB2;font-size:15px;line-height:1.6}
+.feat .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.feat .meta span{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:12px;color:#E8DDD5}
+.feat .meta .ic{font-size:13px;color:#FF9A6B}
+.feat .cta{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.feat .btn.p{padding:11px 18px;box-shadow:0 10px 24px -8px rgba(255,87,26,.7)}
+.feat .btn.ghost{color:#F1E6DE;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+.feat .btn.ghost:hover{background:rgba(255,255,255,.1)}
+.feat .art{width:168px;height:168px;border-radius:40px;display:flex;align-items:center;justify-content:center;font-size:72px;color:#fff;background:linear-gradient(145deg,#FF7A3D,#C2410C 70%);box-shadow:0 30px 60px -20px rgba(255,87,26,.6),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -12px 24px rgba(0,0,0,.18);transform:rotate(-6deg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.feat:hover .art{transform:rotate(0) scale(1.03)}
+.feat .art .ic{stroke-width:1.5}
+.feat .art img{width:100%;height:100%;object-fit:cover;border-radius:40px}
+@media (max-width:760px){.feat{grid-template-columns:1fr;padding:26px 22px}.feat .art{display:none}.feat h2{font-size:26px}}
 .host{font-size:12px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cact{display:flex;margin:-4px -6px 0 0}
 .cact button{padding:6px;border-radius:7px;color:var(--faint);font-size:15px;opacity:0;transition:.15s}
@@ -130,7 +159,7 @@ h1 em{font-style:normal;color:var(--brand)}
 .cdesc{margin:12px 0 0;font-size:13px;line-height:20px;color:var(--muted);min-height:40px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .cfoot{display:flex;align-items:center;gap:8px;margin-top:16px}
 .ctag{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:11px;font-weight:500;color:var(--muted)}
-.open{margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:500;color:var(--muted);transition:.15s}
+.open{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:500;color:var(--muted);transition:.15s}
 .card:hover .open{color:var(--cta)}
 .badge{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:500}
 .badge:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
@@ -313,6 +342,10 @@ const ic = n => `<svg class="ic" viewBox="0 0 24 24">${ICONS[n] || ICONS.box}</s
 const host = u => { try { return new URL(u).hostname.replace(/^www\./,''); } catch { return u; } };
 const safeUrl = u => /^https?:\/\//i.test(u||'') ? u : '#';
 const isNew = r => r.createdAt && Date.now() - Date.parse(r.createdAt) < 14*864e5;
+let HOT = new Set();
+function computeHot(){ HOT = new Set(S.res.filter(r=>r.status!=='under_development' && (S.usage[r.id]||0)>0).sort((a,b)=>(S.usage[b.id]||0)-(S.usage[a.id]||0)).slice(0,3).map(r=>r.id)); }
+const fmtN = n => n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+'M':n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+'k':String(n);
+const flags = r => (HOT.has(r.id)?`<em class="flag hot">${ic('flame')}Trending</em>`:'') + (isNew(r)?`<em class="flag new">${ic('sparkles')}New</em>`:'');
 function hydrateIcons(root=document){ root.querySelectorAll('svg[data-i]').forEach(s=>{ s.innerHTML = ICONS[s.dataset.i]||''; s.removeAttribute('data-i'); }); }
 
 /* ---------------- state ---------------- */
@@ -326,7 +359,7 @@ const S = {
 };
 let sb=null;
 const COLS={
-  resources:{cols:['name','description','details','url','category_id','status','icon_name','icon_url','tags','is_pinned','sort_order'],map:{categoryId:'category_id',icon:'icon_name',iconData:'icon_url',pinned:'is_pinned',order:'sort_order',createdAt:'created_at',clicks:'click_count'}},
+  resources:{cols:['name','description','details','url','category_id','status','icon_name','icon_url','tags','is_pinned','is_featured','sort_order'],map:{featured:'is_featured',categoryId:'category_id',icon:'icon_name',iconData:'icon_url',pinned:'is_pinned',order:'sort_order',createdAt:'created_at',clicks:'click_count'}},
   categories:{cols:['name','slug','icon_name','sort_order'],map:{icon:'icon_name',order:'sort_order'}},
   announcements:{cols:['title','body','kind','resource_id','is_active'],map:{resourceId:'resource_id',active:'is_active',createdAt:'created_at'}},
 };
@@ -388,13 +421,13 @@ const icoHtml = (r, size='') => r.iconData
 
 function cardHtml(r,i=0){
   const fav=S.favs.includes(r.id);
-  return `<div class="card" role="link" tabindex="0" data-open="${esc(r.id)}" style="animation-delay:${Math.min(i,12)*30}ms">
+  return `<div class="card ${HOT.has(r.id)?'is-hot':''}" role="link" tabindex="0" data-open="${esc(r.id)}" style="animation-delay:${Math.min(i,12)*30}ms">
     <div class="ctop">${icoHtml(r)}
-      <div class="ctitle"><h3><span>${esc(r.name)}</span>${isNew(r)?'<em class="new">New</em>':''}</h3><div class="host">${esc(host(r.url))}</div></div>
+      <div class="ctitle"><h3><span>${esc(r.name)}</span></h3><div class="host">${esc(host(r.url))}</div>${(HOT.has(r.id)||isNew(r))?`<div class="flags">${flags(r)}</div>`:''}</div>
       <div class="cact"><button data-detail="${esc(r.id)}" aria-label="Details for ${esc(r.name)}">${ic('info')}</button><button class="${fav?'fav':''}" data-fav="${esc(r.id)}" aria-label="${fav?'Remove from':'Add to'} favorites">${ic('star')}</button></div>
     </div>
     <p class="cdesc">${esc(r.description||'No description yet.')}</p>
-    <div class="cfoot">${catName(r.categoryId)?`<span class="ctag">${esc(catName(r.categoryId))}</span>`:''}${r.status!=='active'?`<span class="badge ${esc(r.status)}">${esc(STATUS[r.status]||r.status)}</span>`:''}<span class="open">Open ${ic('arrow-up-right')}</span></div>
+    <div class="cfoot">${catName(r.categoryId)?`<span class="ctag">${esc(catName(r.categoryId))}</span>`:''}${r.status!=='active'?`<span class="badge ${esc(r.status)}">${esc(STATUS[r.status]||r.status)}</span>`:''}<span class="launch" title="Times opened from the Toolkit">${ic('zap')}${fmtN(clicks(r.id))}</span><span class="open" style="margin-left:auto">Open ${ic('arrow-up-right')}</span></div>
   </div>`;
 }
 const miniHtml = r => `<button class="mini" data-open="${esc(r.id)}">${icoHtml(r,'sm')}<span class="mt"><b>${esc(r.name)}</b><span class="host">${esc(host(r.url))}</span></span>${ic('arrow-up-right')}</button>`;
@@ -420,6 +453,16 @@ function renderHome(){
   else if(S.loadErr) h += `<div class="note">Couldn't load the toolkit: ${esc(S.loadErr)}. Check that <code>schema.sql</code> has been run.</div>`;
   else if(S.timedOut && loading) h += `<div class="note">The toolkit list can't be reached yet. It will appear as soon as the connection answers.</div>`;
 
+  computeHot();
+  if(!loading && !filtering){
+    const f = live.find(r=>r.featured) || live.filter(r=>HOT.has(r.id)).sort((a,b)=>clicks(b.id)-clicks(a.id))[0];
+    if(f) h += `<section class="feat" aria-label="Featured tool"><div class="grain"></div>
+      <div><span class="eyebrow"><i></i>${f.featured?'Featured tool':'Most loved this week'}</span>
+        <h2>${esc(f.name)}</h2><p>${esc(f.description||'')}</p>
+        <div class="meta"><span>${ic('zap')}${fmtN(clicks(f.id))} launches</span>${catName(f.categoryId)?`<span>${ic('folder')}${esc(catName(f.categoryId))}</span>`:''}<span>${ic('globe')}${esc(host(f.url))}</span></div>
+        <div class="cta"><button class="btn p" data-open="${esc(f.id)}">Open ${esc(f.name)} ${ic('arrow-up-right')}</button><button class="btn ghost" data-detail="${esc(f.id)}">Details</button></div></div>
+      <div class="art">${f.iconData?`<img alt="" src="${esc(f.iconData)}">`:ic(f.icon)}</div></section>`;
+  }
   if(anns.length) h += `<div class="banners">${anns.map(a=>{
     const linked = a.resourceId && byId(a.resourceId);
     const icon = a.kind==='maintenance'?'wrench':a.kind==='launch'?'megaphone':'sparkles';
@@ -621,7 +664,7 @@ function renderModal(){
       <div style="flex:1"><div class="ipick">${PICK.map(k=>`<button type="button" title="${k}" class="${!d.iconData&&d.icon===k?'on':''}" data-ficon="${k}">${ic(k)}</button>`).join('')}</div><p class="hint">Pick an icon or upload a logo. Uploads are shrunk to 128 px.</p></div></div></div>
     <div class="full"><label class="l" for="f-tags">Search keywords, comma separated</label><input class="inp" id="f-tags" value="${esc((d.tags||[]).join(', '))}" placeholder="video, captions, subtitles"></div>
     <div class="full"><label class="l" for="f-details">More details, shown in the detail panel (optional)</label><textarea class="inp" id="f-details" placeholder="Who it's for, login notes, owner, docs link…">${esc(d.details||'')}</textarea></div>
-    <div class="full"><label class="tog"><input type="checkbox" id="f-pin" ${d.pinned?'checked':''}><i></i>Pin to top of the Toolkit</label></div>`;
+    <div class="full" style="display:flex;gap:22px;flex-wrap:wrap"><label class="tog"><input type="checkbox" id="f-pin" ${d.pinned?'checked':''}><i></i>Pin to top</label><label class="tog"><input type="checkbox" id="f-feat" ${d.featured?'checked':''}><i></i>Feature in top banner</label></div>`;
   } else if(M.type==='cat'){
     body=`<div class="full"><label class="l" for="f-name">Name</label><input class="inp" id="f-name" value="${esc(d.name)}" placeholder="Templates"></div>
     <div class="full"><label class="l">Icon</label><div class="ipick">${PICK.map(k=>`<button type="button" title="${k}" class="${d.icon===k?'on':''}" data-ficon="${k}">${ic(k)}</button>`).join('')}</div></div>`;
@@ -640,7 +683,7 @@ function renderModal(){
 }
 function readForm(){
   const d=S.modal.d, v=id=>document.getElementById(id)?.value;
-  if(S.modal.type==='res'){ Object.assign(d,{name:v('f-name'),url:v('f-url'),description:v('f-desc'),categoryId:v('f-cat')||null,tags:(v('f-tags')||'').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean),details:v('f-details'),pinned:$('#f-pin')?.checked||false}); }
+  if(S.modal.type==='res'){ Object.assign(d,{name:v('f-name'),url:v('f-url'),description:v('f-desc'),categoryId:v('f-cat')||null,tags:(v('f-tags')||'').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean),details:v('f-details'),pinned:$('#f-pin')?.checked||false,featured:$('#f-feat')?.checked||false}); }
   else if(S.modal.type==='cat'){ d.name=v('f-name'); }
   else { Object.assign(d,{title:v('f-name'),body:v('f-desc'),resourceId:v('f-link')||null}); }
 }
@@ -659,6 +702,7 @@ async function saveModal(){
   const col = {res:'resources',cat:'categories',ann:'announcements'}[M.type];
   const row = toRow(col,d);
   M.saving=true; M.err=null; renderModal();
+  if(M.type==='res' && d.featured) await sb.from('resources').update({is_featured:false}).eq('is_featured',true);
   const q = d.id ? sb.from(col).update(row).eq('id',d.id) : sb.from(col).insert(row);
   const { error } = await q;
   if(error) return fail(error.message || 'Couldn\'t save. Check that you are an admin.');
